@@ -1,0 +1,55 @@
+//
+const dayjs = require('dayjs');
+const { 
+    //
+    day_subscribe,
+    day_lrange,
+    day_rpop,
+    day_ltrim,
+    day_lindex,
+    day_llen,
+    day_lpush,
+    day_setex,
+    contro_get,
+    contro_set
+    //
+} = require('./tool/redis');
+//
+const lottery_day_fix = 'lottery_day_list_';
+// 清除开奖号码列表 (慎用)
+// const clean_list = async() => 
+// {
+//     const _arr = [
+//         'jnd',
+//         'ddbj',
+//         'jnc',
+//         'au',
+//         'elg',
+//         'slfk',
+//         // 'btc'
+//     ];
+//     for(let i in _arr)
+//     {
+//         await day_lrange(lottery_list_fix+''+_arr[i], 2, 1);
+//     }
+// }
+// 
+const test = async() => 
+{
+    await contro_set('game_list_kr', {
+        peroids: 3220082,
+        time: '2022-05-22 08:49:00',
+        number: [
+            1,  2, 11, 20, 26, 27, 34,
+            39, 46, 47, 49, 50, 56, 60,
+            61, 63, 68, 69, 71, 80
+        ]
+    });
+    // await clean_list();
+    const _list = await contro_get('game_list_kr', 0, -1);
+    console.log(_list);
+    const time = await dayjs().format('YYYY-MM-DD HH:mm:ss');
+    console.log(time);
+
+}
+test();
