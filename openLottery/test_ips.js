@@ -57,11 +57,9 @@ const lottery_day_fix = 'lottery_day_list_';
 const test = async() =>
 {
     const ips = {
-        'sd28': '113.17.169.45',
-        // 'sd28': '183.57.36.16',
-        'sj28': '116.10.189.66',
-        // 'sj28': '219.129.216.139',
-        'wn28': '116.10.184.155',
+        'sd28': '183.57.36.16:7777',
+        'sj28': '219.129.216.139:7777',
+        'wn28': '116.10.184.155:7777',
     };
     // 
     for(let i in ips)
@@ -69,7 +67,7 @@ const test = async() =>
         const reqs = await request({
             method: 'get',
             json: true,
-            uri:'http://'+ips[i]+':7777?category=kr&peroids=3258646'
+            uri:'http://'+ips[i]+'?category=btc&peroids=2320727'
         });
         console.log(reqs);
     }   

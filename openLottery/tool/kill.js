@@ -6,10 +6,10 @@ const { kill_kr_au_x } = require('./krnumx');
 // const { getGameListData } = require('./gameToolx');
 //
 const ips = {
-    'sd28': '113.17.169.45',
-    'sj28': '116.10.189.66',
-    'wn28': '116.10.184.155',
-}
+    'sd28': '183.57.36.16:7777',
+    'sj28': '219.129.216.139:7777',
+    'wn28': '116.10.184.155:7777',
+};
 const _odds = {
     '11': {
         2: 36.00, 3: 18.00, 4: 12.00, 5: 9.00, 6: 7.20,
@@ -57,7 +57,7 @@ const getSumBets = async(category, peroids) =>
             const reqs = await request({
                 method: 'get',
                 json: true,
-                uri:'http://'+ips[i]+':7777?category='+category+'&peroids='+peroids
+                uri:'http://'+ips[i]+'?category='+category+'&peroids='+peroids
             });
             //
             if(reqs && Object.keys(reqs).length>0)
